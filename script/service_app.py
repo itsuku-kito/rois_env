@@ -314,67 +314,7 @@ def main():
 
     rois.connect("connect")
 
-    speech_bind("Speech_Synthesis")
-    speech_bind("Speech_Recognition")
-
-    print(person_detect())
-    rospy.sleep(1)
-
-    speech("hello")
-    response = recognize_response("japanese")
-    print(response)
-    
-    person_id = patient_identify()
-    print(person_id)
-
-    rospy.sleep(2)
-
-    print(person_localize())
-
-    move_forward( [[300, 0, 0],[0,0]])   
-    rospy.sleep(3)
-
-    if person_id == "Person4":
-      speech("measure3")
-    elif person_id == "Person3":
-      speech("measure2")
-
-    rospy.sleep(5)
-    
-
-    speech("yorosiku")
-    
-    rospy.sleep(3)
-    
     approach()
-
-    rospy.sleep(3)
-
-    speech("check")
-
-    rospy.sleep(5)
-
-    touch()
-    
-    rospy.sleep(4)
-    
-    speech("thank")
-
-    rospy.sleep(3)
-
-    leave()
-    rospy.sleep(3)
-
-    speech("ask1")
-    rospy.sleep(0.5)
-    response = recognize_response("japanese")
-    print(response)
-
-    voice = judgement(response)
-    print(voice)
-  
-    speech(voice)
-
 
 def scenario(scenario):
     with open(scenario , 'r') as infile:
@@ -403,7 +343,7 @@ def scenario(scenario):
           move_forward(task_arg)   
           rospy.sleep(3)
 
-
+          
         elif task_name == "Person_Detection":
           person_detect()
         
