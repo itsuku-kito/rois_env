@@ -302,11 +302,11 @@ def main_action():
     rois.connect("connect")
 
     approach("Approach")
-    rospy.sleep(1)
-    touch("Touch")
-    rospy.sleep(1)
+    #rospy.sleep(1)
+    #touch("Touch")
+    #rospy.sleep(1)
 
-    leave("Leave")
+    #leave("Leave")
     
 
 
