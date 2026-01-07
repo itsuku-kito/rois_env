@@ -108,12 +108,13 @@ class ROIS_METHOD:
   def monitor_progress(self):
     rospy.loginfo("待機中...")
     result = rospy.wait_for_message( '/completed', completed)
+    #result = rospy.wait_for_message( '/SEED_Noid//completed', completed)
     rospy.loginfo(f"Received message: {result.command_id}", )
     rospy.loginfo(f"Received message: {result.status}", )
 
 
   def monitor_event(self):
-    rospy.loginfo("待機中...")
+    rospy.loginfo("待機...")
     result = rospy.wait_for_message( '/notify_event', notifyevent)
     rospy.loginfo(f"Received message: {result.event_id}", )
     rospy.loginfo(f"Received message: {result.event_type}", )
@@ -297,11 +298,32 @@ def touch():
     rois.release(component_ref)
     return result
 
+def pick():
+    component_ref = "Pick"
+    print(component_ref)
+    rois.bind_any(component_ref)
+
+    rois.execute("start")
+    result = rois.monitor_progress()
+    rois.release(component_ref)
+    return result
+
+def pick():
+    component_ref = "Pick"
+    print(component_ref)
+    rois.bind_any(component_ref)
+
+    rois.execute("start")
+    result = rois.monitor_progress()
+    rois.release(component_ref)
+    return result
+
 
 def main_action():
     rois.connect("connect")
 
     approach("Approach")
+    move_forward( [[300, 0, 0],[0,0]])  
     #rospy.sleep(1)
     #touch("Touch")
     #rospy.sleep(1)
@@ -315,6 +337,7 @@ def main():
     rois.connect("connect")
 
     approach()
+    #move_forward( [[300, 0, 0],[0,0]]) 
 
 def scenario(scenario):
     with open(scenario , 'r') as infile:

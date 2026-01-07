@@ -101,6 +101,7 @@ add_service_files(
   JudgeParam.srv
   detection.srv
   GetPosition.srv
+  MoveCommunication.srv
 )
 
 ## Generate actions in the 'action' folder
