@@ -308,7 +308,7 @@ def pick():
     rois.release(component_ref)
     return result
 
-def pick():
+def place():
     component_ref = "Pick"
     print(component_ref)
     rois.bind_any(component_ref)
@@ -318,17 +318,17 @@ def pick():
     rois.release(component_ref)
     return result
 
+def navigation():
+    component_ref = "Navigation"
+    print(component_ref)
+    rois.bind_any(component_ref)
 
-def main_action():
-    rois.connect("connect")
+    rois.execute("start")
+    result = rois.monitor_progress()
+    rois.release(component_ref)
+    return result
 
-    approach("Approach")
-    move_forward( [[300, 0, 0],[0,0]])  
-    #rospy.sleep(1)
-    #touch("Touch")
-    #rospy.sleep(1)
 
-    #leave("Leave")
     
 
 
@@ -337,6 +337,9 @@ def main():
     rois.connect("connect")
 
     approach()
+    navigation()
+    leave()
+    navigation()
     #move_forward( [[300, 0, 0],[0,0]]) 
 
 def scenario(scenario):
